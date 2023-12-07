@@ -5,12 +5,6 @@ import com.payu.entity.BookEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-
 @Component
 public class BookDtoConverter implements Converter<BookDto, BookEntity> {
 
@@ -22,7 +16,7 @@ public class BookDtoConverter implements Converter<BookDto, BookEntity> {
         bookEntity.setIsbnNumber(source.getIsbnNumber());
         bookEntity.setPrice(source.getPrice());
         bookEntity.setBookType(source.getBookType());
-        bookEntity.setPublishDate(CustomDateFormat.formatDate(source.getPublishDate()));
+        bookEntity.setPublishDate(source.getPublishDate());
         return bookEntity;
     }
 

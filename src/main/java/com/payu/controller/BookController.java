@@ -40,4 +40,14 @@ public class BookController implements BookApi {
     public ResponseEntity<List<BookDto>> list() {
         return ResponseEntity.ok(service.list());
     }
+
+    @Override
+    public ResponseEntity<BookDto> getBook(Long bookId) {
+        return ResponseEntity.ok(service.findBook(bookId));
+    }
+
+    @Override
+    public ResponseEntity<List<BookDto>> findBooksByName(String bookName) {
+        return ResponseEntity.ok(service.findBookByName(bookName));
+    }
 }

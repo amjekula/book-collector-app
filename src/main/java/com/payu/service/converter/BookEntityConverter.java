@@ -16,7 +16,7 @@ public class BookEntityConverter implements Converter<BookEntity, BookDto> {
         bookDto.setIsbnNumber(source.getIsbnNumber());
         bookDto.setPrice(source.getPrice());
         bookDto.setBookType(source.getBookType());
-        bookDto.setPublishDate(CustomDateFormat.formatDate(source.getPublishDate()));
+        bookDto.setPublishDate(source.getPublishDate());
         return bookDto;
     }
 }

@@ -45,10 +45,24 @@ public class BookService {
         return convertToDto(saved);
     }
 
-    public BookDto edit(BookDto dto) {
-        boolean isExist = repository.existsById(dto.getId());
+    public BookDto findBook(Long bookId) {
+        return repository.findById(bookId).map(this::convertToDto).orElseThrow(EntityNotFoundException::new);
+    }
 
-        if (isExist) {
+    public List<BookDto> findBookByName(String bookName) {
+        if (bookName.isEmpty()) {
+            return list();
+        }
+
+        return repository.findAllBooksByNameContainingIgnoreCase(bookName).stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    public BookDto edit(BookDto dto) {
+        boolean isPresent = repository.existsById(dto.getId());
+
+        if (isPresent) {
             BookEntity entity = repository.save(convertToEntity(dto));
             return convertToDto(entity);
         }

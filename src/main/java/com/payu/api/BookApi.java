@@ -12,7 +12,7 @@ public interface BookApi {
     @PostMapping("/add")
     ResponseEntity<BookDto> add(@RequestBody BookDto bookDto);
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     ResponseEntity<BookDto> edit(@RequestBody BookDto bookDto);
 
     @DeleteMapping("/delete/{bookId}")
@@ -20,4 +20,10 @@ public interface BookApi {
 
     @GetMapping("/list")
     ResponseEntity<List<BookDto>> list();
+
+    @GetMapping("/get/{bookId}")
+    ResponseEntity<BookDto> getBook(@PathVariable("bookId") Long bookId);
+
+    @GetMapping("/find/{bookName}")
+    ResponseEntity<List<BookDto>> findBooksByName(@PathVariable("bookName") String bookName);
 }
