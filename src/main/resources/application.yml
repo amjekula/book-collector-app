@@ -3,10 +3,15 @@ server:
 
 spring:
   datasource:
-    url: jdbc:hsqldb:file:./target/hsqldb-server/bookcollectordb;DB_CLOSE_DELAY=-1
+    name: bookcollectordb
+    url: jdbc:hsqldb:file:./target/hsqldb-server/${spring.datasource.name};DB_CLOSE_DELAY=-1
     driverClassName: org.hsqldb.jdbc.JDBCDriver
+    port: 9001
     username: sa
     password:
+    hsql:
+      server:
+        baseDirectory: target/hsqldb-server
 
   jpa:
     database-platform: org.hibernate.dialect.HSQLDialect

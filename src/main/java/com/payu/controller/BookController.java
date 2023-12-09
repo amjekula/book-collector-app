@@ -1,7 +1,7 @@
 package com.payu.controller;
 
 import com.payu.api.BookApi;
-import com.payu.api.BookDto;
+import com.payu.api.BookDTO;
 import com.payu.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,12 +21,12 @@ public class BookController implements BookApi {
     private BookService service;
 
     @Override
-    public ResponseEntity<BookDto> add(BookDto bookDto) {
+    public ResponseEntity<BookDTO> add(BookDTO bookDto) {
         return ResponseEntity.ok(service.add(bookDto));
     }
 
     @Override
-    public ResponseEntity<BookDto> edit(BookDto bookDto) {
+    public ResponseEntity<BookDTO> edit(BookDTO bookDto) {
         return ResponseEntity.ok(service.edit(bookDto));
     }
 
@@ -37,17 +37,17 @@ public class BookController implements BookApi {
     }
 
     @Override
-    public ResponseEntity<List<BookDto>> list() {
+    public ResponseEntity<List<BookDTO>> list() {
         return ResponseEntity.ok(service.list());
     }
 
     @Override
-    public ResponseEntity<BookDto> getBook(Long bookId) {
+    public ResponseEntity<BookDTO> getBook(Long bookId) {
         return ResponseEntity.ok(service.findBook(bookId));
     }
 
     @Override
-    public ResponseEntity<List<BookDto>> findBooksByName(String bookName) {
-        return ResponseEntity.ok(service.findBookByName(bookName));
+    public ResponseEntity<List<BookDTO>> findBooksByName(String bookName) {
+        return ResponseEntity.ok(service.findBooksByName(bookName));
     }
 }

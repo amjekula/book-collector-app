@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode
 @NoArgsConstructor
-public class BookDto {
+public class BookDTO {
 
     private long id;
 
@@ -21,6 +21,8 @@ public class BookDto {
 
     @NotNull
     private String publishDate;
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+//    private LocalDate publishDate;
 
     @NotNull
     private double price;

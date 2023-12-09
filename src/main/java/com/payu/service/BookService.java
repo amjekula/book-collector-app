@@ -1,6 +1,6 @@
 package com.payu.service;
 
-import com.payu.api.BookDto;
+import com.payu.api.BookDTO;
 import com.payu.entity.BookEntity;
 import com.payu.repository.BookRepository;
 import lombok.extern.log4j.Log4j2;
@@ -22,17 +22,15 @@ public class BookService {
     @Autowired
     private ConversionService conversionService;
 
-    public List<BookDto> list() {
+    public List<BookDTO> list() {
         return repository.findAll().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
-
-    public BookDto add(BookDto dto) {
+    public BookDTO add(BookDTO dto) {
         BookEntity bookEntity = repository.findById(dto.getId()).orElseGet(() -> {
                     BookEntity entity = new BookEntity();
-                    entity.setId(dto.getId());
                     entity.setName(dto.getName());
                     entity.setIsbnNumber(dto.getIsbnNumber());
                     entity.setPrice(dto.getPrice());
@@ -45,11 +43,11 @@ public class BookService {
         return convertToDto(saved);
     }
 
-    public BookDto findBook(Long bookId) {
+    public BookDTO findBook(Long bookId) {
         return repository.findById(bookId).map(this::convertToDto).orElseThrow(EntityNotFoundException::new);
     }
 
-    public List<BookDto> findBookByName(String bookName) {
+    public List<BookDTO> findBooksByName(String bookName) {
         if (bookName.isEmpty()) {
             return list();
         }
@@ -59,7 +57,7 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
-    public BookDto edit(BookDto dto) {
+    public BookDTO edit(BookDTO dto) {
         boolean isPresent = repository.existsById(dto.getId());
 
         if (isPresent) {
@@ -74,11 +72,11 @@ public class BookService {
         repository.delete(bookEntity);
     }
 
-    private BookDto convertToDto(BookEntity bookEntity) {
-        return conversionService.convert(bookEntity, BookDto.class);
+    private BookDTO convertToDto(BookEntity bookEntity) {
+        return conversionService.convert(bookEntity, BookDTO.class);
     }
 
-    private BookEntity convertToEntity(BookDto bookDto) {
+    private BookEntity convertToEntity(BookDTO bookDto) {
         return conversionService.convert(bookDto, BookEntity.class);
     }
 }

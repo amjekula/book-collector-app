@@ -10,20 +10,20 @@ import java.util.List;
 public interface BookApi {
 
     @PostMapping("/add")
-    ResponseEntity<BookDto> add(@RequestBody BookDto bookDto);
+    ResponseEntity<BookDTO> add(@RequestBody BookDTO bookDto);
 
     @PostMapping("/update")
-    ResponseEntity<BookDto> edit(@RequestBody BookDto bookDto);
+    ResponseEntity<BookDTO> edit(@RequestBody BookDTO bookDto);
 
     @DeleteMapping("/delete/{bookId}")
     ResponseEntity<Void> delete(@PathVariable Long bookId);
 
     @GetMapping("/list")
-    ResponseEntity<List<BookDto>> list();
+    ResponseEntity<List<BookDTO>> list();
 
     @GetMapping("/get/{bookId}")
-    ResponseEntity<BookDto> getBook(@PathVariable("bookId") Long bookId);
+    ResponseEntity<BookDTO> getBook(@PathVariable("bookId") Long bookId);
 
     @GetMapping("/find/{bookName}")
-    ResponseEntity<List<BookDto>> findBooksByName(@PathVariable("bookName") String bookName);
+    ResponseEntity<List<BookDTO>> findBooksByName(@PathVariable("bookName") String bookName);
 }

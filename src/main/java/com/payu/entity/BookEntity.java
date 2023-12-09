@@ -1,6 +1,6 @@
 package com.payu.entity;
 
-
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,7 +23,10 @@ public class BookEntity implements Serializable {
 
     private String isbnNumber;
 
+    @NotNull
     private String publishDate;
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+//    private LocalDate publishDate;
 
     private double price;
 
