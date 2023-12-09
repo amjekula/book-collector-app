@@ -16,7 +16,7 @@ public interface BookApi {
     ResponseEntity<BookDTO> edit(@RequestBody BookDTO bookDto);
 
     @DeleteMapping("/delete/{bookId}")
-    ResponseEntity<Void> delete(@PathVariable Long bookId);
+    ResponseEntity<Void> delete(@PathVariable("bookId") Long bookId);
 
     @GetMapping("/list")
     ResponseEntity<List<BookDTO>> list();
