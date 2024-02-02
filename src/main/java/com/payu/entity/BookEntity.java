@@ -1,9 +1,17 @@
 package com.payu.entity;
 
 import com.sun.istack.NotNull;
-import lombok.*;
+import lombok.ToString;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity

@@ -6,8 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(scanBasePackages = "${scan.packages:com.payu}")
 @ComponentScan(basePackages = "com.payu")
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class Application {
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
 }
